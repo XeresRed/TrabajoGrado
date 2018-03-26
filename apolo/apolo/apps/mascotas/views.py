@@ -8,6 +8,7 @@ def index(request):
     if request.method == "POST":
         persona = Persona.objects.get(email=request.POST["correo"])
         if(persona.password == request.POST["pass"]):
+            return render(request, 'DashBoard/index.html', {'persona':persona})
             return HttpResponse("Bienvenido al sistema " + persona.username)
         else:
             return HttpResponse("paso algo")
